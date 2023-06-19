@@ -34,7 +34,8 @@ project "XEngine"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/src"
 	}
 
 	-- 系统设置
@@ -45,8 +46,8 @@ project "XEngine"
 
 		defines
 		{
-			"XE_PLATFORM_WINDOWS",
-			"XE_BUILD_DLL"
+			"XENGINE_PLATFORM_WINDOWS",
+			"XENGINE_BUILD_DLL"
 		}
 
 		-- 将生成的dll文件copy到demo项目中
@@ -57,15 +58,15 @@ project "XEngine"
 
 	-- 配置设置
 	filter "configurations:Debug"
-		defines "XE_DEBUG"
+		defines "XENGINE_DEBUG"
 		symbols "On"
 	
 	filter "configurations:Release"
-		defines "XE_RELEASE"
+		defines "XENGINE_RELEASE"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "XE_DIST"
+		defines "XENGINE_DIST"
 		optimize "On"
 	
 -- 应用项目
@@ -108,19 +109,19 @@ project "DemoApp"
 
 		defines
 		{
-			"XE_PLATFORM_WINDOWS"
+			"XENGINE_PLATFORM_WINDOWS"
 		}
 
 	-- 配置设置
 	filter "configurations:Debug"
-		defines "XE_DEBUG"
+		defines "XENGINE_DEBUG"
 		symbols "On"
 	
 	filter "configurations:Release"
-		defines "XE_RELEASE"
+		defines "XENGINE_RELEASE"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "XE_DIST"
+		defines "XENGINE_DIST"
 		optimize "On"
 	

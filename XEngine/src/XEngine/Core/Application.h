@@ -1,10 +1,11 @@
 #pragma once
 
-#include "Core.h"
+#include "XEngine/Core/Core.h"
+#include "XEngine/Events/Event.h"
 
 namespace XEngine {
 
-	class XE_API Application
+	class XENGINE_API Application
 	{
 	public:
 		Application();

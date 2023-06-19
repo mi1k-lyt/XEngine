@@ -1,12 +1,12 @@
 #pragma once
 
 // Headfile for use by XEngine application
-#include "XEngine/Application.h"
+#include "XEngine/Core/Application.h"
 
 // Log for XEngine
-#include "XEngine/Log.h"
+#include "XEngine/Core/Log.h"
 
 // ----------Entry Point--------------
-#include "XEngine/EntryPoint.h"
+#include "XEngine/Core/EntryPoint.h"
 // -----------------------------------
 
