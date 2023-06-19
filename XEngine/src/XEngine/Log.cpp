@@ -7,6 +7,7 @@ namespace XEngine {
 
 	void Log::Init()
 	{
+		// set pattern for logging
 		spdlog::set_pattern("%^[%T] %n: %v%$");
 
 		s_CoreLogger = spdlog::stdout_color_mt("XEngine");

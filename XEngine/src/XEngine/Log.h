@@ -15,7 +15,9 @@ namespace XEngine {
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClinetLogger; }
 
 	private:
+		// logger for CoreEngine
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
+		// logger for Client
 		static std::shared_ptr<spdlog::logger> s_ClinetLogger;
 	};
 
