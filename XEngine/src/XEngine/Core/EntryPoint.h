@@ -16,7 +16,6 @@ int main(int argc, char** argv)
 	demo->Run();
 	delete demo;
 
-	return 0;
 }
 
 #endif

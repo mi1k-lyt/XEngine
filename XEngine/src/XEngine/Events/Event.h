@@ -1,10 +1,7 @@
 #pragma once
-
+#include "Pch.h"
 #include "XEngine/Core/Core.h"
 
-#include <string>
-#include <sstream>
-#include <functional>
 
 namespace XEngine {
 

@@ -2,7 +2,7 @@
 
 namespace XEngine {
 
-	using KeyCode = unsigned short int;
+	using KeyCode = uint16_t;
 
 	namespace Key
 	{

@@ -1,6 +1,8 @@
 #pragma once
 
 // Headfile for use by XEngine application
+#include "XEngine/Core/Core.h"
+
 #include "XEngine/Core/Application.h"
 
 // Log for XEngine

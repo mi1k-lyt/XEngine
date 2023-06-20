@@ -1,7 +1,7 @@
 #pragma once
 
 namespace XEngine {
-	using MouseCode = unsigned short int;
+	using MouseCode = uint16_t;
 
 	namespace Mouse
 	{

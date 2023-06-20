@@ -12,6 +12,12 @@ workspace "XEngine"
 -- 输出目录
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (Solution Directories)
+IncludeDir = {}
+IncludeDir["GLFW"] = "XEngine/vendor/GLFW/include"
+
+include "XEngine/vendor/GLFW"
+
 -- 引擎项目
 project "XEngine"
 	-- 位置
@@ -26,6 +32,10 @@ project "XEngine"
 	-- 中间输出目录
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	-- 预编译头文件
+	pchheader "Pch.h"
+	pchsource "XEngine/src/Pch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -35,7 +45,14 @@ project "XEngine"
 	includedirs
 	{
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	-- 系统设置
@@ -82,6 +99,7 @@ project "DemoApp"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	-- 中间输出目录
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
 
 	files
 	{

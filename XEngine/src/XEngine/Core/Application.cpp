@@ -1,13 +1,16 @@
-#include "Application.h"
+#include "Pch.h"
+#include "XEngine/Core/Application.h"
 
 #include "XEngine/Events/ApplicationEvent.h"
-#include "XEngine/Core/Log.h"
+
+#include <GLFW/glfw3.h>
+
 
 namespace XEngine {
 
 	Application::Application()
 	{
-
+		m_Window = Window::Create();
 	}
 
 	Application::~Application()
@@ -17,10 +20,12 @@ namespace XEngine {
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-		XENGINE_TRACE(e);
 
-		while (true);
+		while (m_Running)
+		{
+			m_Window->OnUpdate();
+		}
+
 	}
 
 }

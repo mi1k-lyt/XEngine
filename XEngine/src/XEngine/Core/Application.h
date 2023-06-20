@@ -2,6 +2,7 @@
 
 #include "XEngine/Core/Core.h"
 #include "XEngine/Events/Event.h"
+#include "XEngine/Core/Window.h"
 
 namespace XEngine {
 
@@ -12,6 +13,9 @@ namespace XEngine {
 		virtual ~Application();
 
 		void Run();
+	private:
+		Scope<Window> m_Window;
+		bool m_Running = true;
 	};
 
 	// To be defined in Client
