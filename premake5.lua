@@ -12,11 +12,16 @@ workspace "XEngine"
 -- 输出目录
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+
+
 -- Include directories relative to root folder (Solution Directories)
 IncludeDir = {}
 IncludeDir["GLFW"] = "XEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "XEngine/vendor/Glad/include"
+IncludeDir["glm"] = "XEngine/vendor/glm"
 
 include "XEngine/vendor/GLFW"
+include "XEngine/vendor/Glad"
 
 -- 引擎项目
 project "XEngine"
@@ -39,19 +44,31 @@ project "XEngine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
-		"%{IncludeDir.GLFW}"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
+		'Dwmapi.lib',
 		"opengl32.lib"
 	}
 
@@ -110,7 +127,9 @@ project "DemoApp"
 	includedirs
 	{
 		"XEngine/vendor/spdlog/include",
-		"XEngine/src"
+		"XEngine/src",
+		"XEngine/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	-- 链接项目

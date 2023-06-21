@@ -1,0 +1,7 @@
+[22:41:10] [warning] XENGINE: Init Log
+[22:41:10] [info] APP: hello 3
+[22:41:10] [info] XENGINE: Creating window XEngine By Li (1600, 900)
+[22:41:10] [info] XENGINE: OpenGL Info:
+[22:41:10] [info] XENGINE:   Vendor: NVIDIA Corporation
+[22:41:10] [info] XENGINE:   Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2
+[22:41:10] [info] XENGINE:   Version: 4.6.0 NVIDIA 536.23

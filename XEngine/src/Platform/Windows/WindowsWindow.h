@@ -1,6 +1,7 @@
 #pragma once
 
 #include "XEngine/Core/Window.h"
+#include "XEngine/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -28,7 +29,7 @@ namespace XEngine {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
-		//Scope<GraphicsContext> m_Context;
+		Scope<GraphicsContext> m_Context;
 
 		struct WindowData
 		{
