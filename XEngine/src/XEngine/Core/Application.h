@@ -1,12 +1,13 @@
 #pragma once
 
-
 #include "XEngine/Core/Core.h"
 
 #include "XEngine/Core/Window.h"
 #include "XEngine/Core/LayerStack.h"
 #include "XEngine/Events/Event.h"
 #include "XEngine/Events/ApplicationEvent.h"
+
+#include "XEngine/ImGui/ImGuiLayer.h"
 
 int main(int argc, char** argv);
 
@@ -27,6 +28,10 @@ namespace XEngine {
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
 
+		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
+
+		void Close();
+
 		
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
@@ -34,6 +39,7 @@ namespace XEngine {
 		void Run();
 	private:
 		Scope<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

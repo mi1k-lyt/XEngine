@@ -12,6 +12,7 @@ namespace XEngine {
 	{
 		for (Layer* layer : m_Layers)
 		{
+			layer->OnDetach();
 			delete layer;
 		}
 	}
@@ -31,6 +32,7 @@ namespace XEngine {
 		auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
 		if (it != m_Layers.end())
 		{
+			layer->OnDetach();
 			m_Layers.erase(it);
 			m_LayerInsert--;
 		}
@@ -41,6 +43,7 @@ namespace XEngine {
 		auto it = std::find(m_Layers.begin(), m_Layers.end(), overlay);
 		if (it != m_Layers.end())
 		{
+			overlay->OnDetach();
 			m_Layers.erase(it);
 		}
 	}

@@ -18,10 +18,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "XEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "XEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "XEngine/vendor/imgui"
 IncludeDir["glm"] = "XEngine/vendor/glm"
 
 include "XEngine/vendor/GLFW"
 include "XEngine/vendor/Glad"
+include "XEngine/vendor/imgui"
 
 -- ÒýÇæÏîÄ¿
 project "XEngine"
@@ -61,6 +63,7 @@ project "XEngine"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}"
 	}
 
@@ -68,6 +71,7 @@ project "XEngine"
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		-- Reason Why add Dwmapi.lib : https://stackoverflow.com/questions/10727627/dwmextendframeintoclientarea-dosent-work
 		'Dwmapi.lib',
 		"opengl32.lib"

@@ -24,6 +24,9 @@ namespace XEngine {
 	private:
 		// real dataStruct is not stack, because it need iterate on update
 		// we need contiguous data storage
+		
+		// Render Order-->                  <--Event Order
+		// (begin,               ...                  ,end)
 		std::vector<Layer*> m_Layers;
 		std::vector<Layer*>::iterator m_LayerInsert;
 	};
