@@ -67,7 +67,13 @@ namespace XEngine {
 			return ss.str();
 		}
 
-		EVENT_CLASS_TYPE(KeyTyped);
+		static EventType GetStaticType() {
+			return EventType::KeyTyped;
+		} virtual EventType GetEventType() const override {
+			return GetStaticType();
+		} virtual const char* GetName() const override {
+			return "KeyTyped";
+		};
 	};
 
 }

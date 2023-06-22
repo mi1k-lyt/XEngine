@@ -3,9 +3,10 @@
 
 #include "XEngine/Core/Core.h"
 
-
 #include "XEngine/Core/Window.h"
+#include "XEngine/Core/LayerStack.h"
 #include "XEngine/Events/Event.h"
+#include "XEngine/Events/ApplicationEvent.h"
 
 int main(int argc, char** argv);
 
@@ -21,11 +22,20 @@ namespace XEngine {
 
 		Window& GetWindow() { return *m_Window; }
 
+		void OnEvent(Event& e);
+
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* overlay);
+
+		
 	private:
+		bool OnWindowClose(WindowCloseEvent& e);
+
 		void Run();
 	private:
 		Scope<Window> m_Window;
 		bool m_Running = true;
+		LayerStack m_LayerStack;
 	private:
 		static Application* s_Instance;
 		friend int ::main(int argc, char** argv);

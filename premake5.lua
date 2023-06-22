@@ -68,6 +68,7 @@ project "XEngine"
 	{
 		"GLFW",
 		"Glad",
+		-- Reason Why add Dwmapi.lib : https://stackoverflow.com/questions/10727627/dwmextendframeintoclientarea-dosent-work
 		'Dwmapi.lib',
 		"opengl32.lib"
 	}
@@ -93,14 +94,17 @@ project "XEngine"
 	-- 配置设置
 	filter "configurations:Debug"
 		defines "XENGINE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "XENGINE_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "XENGINE_DIST"
+		buildoptions "/MD"
 		optimize "On"
 	
 -- 应用项目
@@ -152,13 +156,16 @@ project "DemoApp"
 	-- 配置设置
 	filter "configurations:Debug"
 		defines "XENGINE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "XENGINE_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "XENGINE_DIST"
+		buildoptions "/MD"
 		optimize "On"
 	
