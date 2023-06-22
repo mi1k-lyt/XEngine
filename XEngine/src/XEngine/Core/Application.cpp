@@ -56,13 +56,11 @@ namespace XEngine {
 		dispatcher.Dispatch<WindowCloseEvent>(XENGINE_BIND_EVENT_FN(OnWindowClose));
 		XENGINE_CORE_TRACE("{0}", e);
 
-		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
-			(*--it)->OnEvent(e);
 			if (e.Handled)
-			{
 				break;
-			}
+			(*it)->OnEvent(e);
 		}
 
 	}
@@ -78,7 +76,16 @@ namespace XEngine {
 				layer->OnUpdate();
 			}
 
+			m_ImGuiLayer->Begin();
+			{
+
+				for (Layer* layer : m_LayerStack)
+					layer->OnImGuiRender();
+			}
+			m_ImGuiLayer->End();
+
 			m_Window->OnUpdate();
+
 		}
 
 	}

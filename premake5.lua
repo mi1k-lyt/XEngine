@@ -137,6 +137,9 @@ project "DemoApp"
 		"XEngine/vendor/spdlog/include",
 		"XEngine/src",
 		"XEngine/vendor",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}"
 	}
 

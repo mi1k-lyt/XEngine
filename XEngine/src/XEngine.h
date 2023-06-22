@@ -5,6 +5,7 @@
 
 #include "XEngine/Core/Application.h"
 #include "XEngine/Core/Layer.h"
+#include "XEngine/ImGui/ImGuiLayer.h"
 
 // Log for XEngine
 #include "XEngine/Core/Log.h"

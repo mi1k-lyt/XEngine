@@ -8,7 +8,7 @@
 
 namespace XEngine {
 
-	class ImGuiLayer : public Layer
+	class XENGINE_API ImGuiLayer : public Layer
 	{
 	public:
 		ImGuiLayer();
@@ -27,6 +27,7 @@ namespace XEngine {
 		uint32_t GetActiveWidgetID() const;
 	private:
 		bool m_BlockEvents = true;
+		float m_Time = 0.0f;
 	};
 
 }

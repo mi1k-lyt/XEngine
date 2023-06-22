@@ -3,11 +3,7 @@
 
 namespace XEngine {
 
-	LayerStack::LayerStack()
-	{
-		m_LayerInsert = m_Layers.begin();
-	}
-
+	
 	LayerStack::~LayerStack()
 	{
 		for (Layer* layer : m_Layers)
@@ -19,7 +15,8 @@ namespace XEngine {
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		m_LayerInsert = m_Layers.emplace(m_LayerInsert, layer);
+		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
+		m_LayerInsertIndex++;
 	}
 
 	void LayerStack::PushOverlay(Layer* overlayer)
@@ -34,7 +31,7 @@ namespace XEngine {
 		{
 			layer->OnDetach();
 			m_Layers.erase(it);
-			m_LayerInsert--;
+			m_LayerInsertIndex--;
 		}
 	}
 

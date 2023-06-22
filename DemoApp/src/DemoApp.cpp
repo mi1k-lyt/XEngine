@@ -25,6 +25,7 @@ public:
 	Demo()
 	{
 		PushLayer(new ExampleLayer());
+		//PushOverlay(new XEngine::ImGuiLayer());
 	}
 
 	~Demo()
