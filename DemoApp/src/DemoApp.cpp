@@ -10,7 +10,7 @@ public:
 
 	void OnUpdate() override
 	{
-		XENGINE_INFO("ExampleLayer::Update");
+		//XENGINE_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(XEngine::Event& event) override
@@ -24,8 +24,7 @@ class Demo : public XEngine::Application
 public:
 	Demo()
 	{
-		PushLayer(new ExampleLayer());
-		//PushOverlay(new XEngine::ImGuiLayer());
+		//PushLayer(new ExampleLayer());
 	}
 
 	~Demo()

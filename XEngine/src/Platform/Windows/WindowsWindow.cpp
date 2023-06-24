@@ -105,6 +105,7 @@ namespace XEngine {
 			}
 		});
 
+
 		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

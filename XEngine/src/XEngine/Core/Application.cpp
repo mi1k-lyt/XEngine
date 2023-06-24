@@ -53,7 +53,8 @@ namespace XEngine {
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(XENGINE_BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowCloseEvent>(XENGINE_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(XENGINE_BIND_EVENT_FN(Application::OnWindowResize));
 		XENGINE_CORE_TRACE("{0}", e);
 
 		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
@@ -76,13 +77,13 @@ namespace XEngine {
 				layer->OnUpdate();
 			}
 
-			m_ImGuiLayer->Begin();
+			/*m_ImGuiLayer->Begin();
 			{
 
 				for (Layer* layer : m_LayerStack)
 					layer->OnImGuiRender();
 			}
-			m_ImGuiLayer->End();
+			m_ImGuiLayer->End();*/
 
 			m_Window->OnUpdate();
 
@@ -94,6 +95,21 @@ namespace XEngine {
 	{
 		m_Running = false;
 		return true;
+	}
+
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		
+
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
+		{
+			return false;
+		}
+
+		
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+
+		return false;
 	}
 
 }

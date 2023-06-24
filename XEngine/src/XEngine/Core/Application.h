@@ -35,6 +35,7 @@ namespace XEngine {
 		
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 
 		void Run();
 	private:
