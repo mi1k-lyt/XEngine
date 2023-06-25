@@ -34,6 +34,8 @@ project "XEngine"
 	-- 语言类型
 	language "C++"
 
+	staticruntime "off"
+
 	-- 目标输出目录
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	-- 中间输出目录
@@ -80,7 +82,6 @@ project "XEngine"
 	-- 系统设置
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -152,7 +153,6 @@ project "DemoApp"
 	-- 系统设置
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -163,16 +163,16 @@ project "DemoApp"
 	-- 配置设置
 	filter "configurations:Debug"
 		defines "XENGINE_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "XENGINE_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "XENGINE_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 	

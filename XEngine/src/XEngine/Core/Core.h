@@ -12,6 +12,10 @@
 	#error XEngine only supports Windows now!
 #endif
 
+#ifdef XENGINE_DEBUG
+	#define XENGINE_ENABLE_ASSERTS
+#endif
+
 #ifdef XENGINE_ENABLE_ASSERTS
 	#define XENGINE_ASSERT(x, ...) {if(!(x)) {XENGINE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define XENGINE_CORE_ASSERT(x, ...) {if(!(x)) {XENGINE_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
