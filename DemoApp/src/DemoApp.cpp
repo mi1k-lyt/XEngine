@@ -1,5 +1,6 @@
 #include <XEngine.h>
 
+
 class ExampleLayer : public XEngine::Layer
 {
 public:
@@ -11,11 +12,18 @@ public:
 	void OnUpdate() override
 	{
 		//XENGINE_INFO("ExampleLayer::Update");
+		
 	}
+
 
 	void OnEvent(XEngine::Event& event) override
 	{
-		XENGINE_TRACE("{0}", event);
+		/*if (event.GetEventType() == XEngine::EventType::KeyPressed)
+		{
+			XEngine::KeyPressedEvent& e = (XEngine::KeyPressedEvent&)event;
+			XENGINE_TRACE("{0}", (char)e.GetKeyCode());
+		}*/
+		//XENGINE_TRACE("{0}", event);
 	}
 };
 

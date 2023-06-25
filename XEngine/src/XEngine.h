@@ -4,6 +4,7 @@
 #include "XEngine/Core/Core.h"
 
 #include "XEngine/Core/Application.h"
+#include "XEngine/Core/Input.h"
 #include "XEngine/Core/Layer.h"
 #include "XEngine/ImGui/ImGuiLayer.h"
 

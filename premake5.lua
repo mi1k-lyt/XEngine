@@ -1,16 +1,15 @@
--- 方案名称
 workspace "XEngine"
-	-- 架构
 	architecture "x64"
+
 	startproject "DemoApp"
-	-- 配置类型
+
 	configurations
 	{
 		"Debug",
 		"Release",
 		"Dist"
 	}
--- 输出目录
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 
@@ -26,22 +25,20 @@ include "XEngine/vendor/GLFW"
 include "XEngine/vendor/Glad"
 include "XEngine/vendor/imgui"
 
--- 引擎项目
+
 project "XEngine"
-	-- 位置
 	location "XEngine"
-	-- 类型.dll
 	kind "SharedLib"
-	-- 语言类型
 	language "C++"
+	cppdialect "C++17"
 	staticruntime "off"
 
-	-- 目标输出目录
+
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	-- 中间输出目录
+
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	-- 预编译头文件
+
 	pchheader "Pch.h"
 	pchsource "XEngine/src/Pch.cpp"
 
@@ -79,7 +76,7 @@ project "XEngine"
 		"opengl32.lib"
 	}
 
-	-- 系统设置
+	
 	filter "system:windows"
 		cppdialect "C++17"
 		systemversion "latest"
@@ -90,13 +87,13 @@ project "XEngine"
 			"XENGINE_BUILD_DLL"
 		}
 
-		-- 将生成的dll文件copy到demo项目中
+		
 		postbuildcommands
 		{
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/DemoApp")
 		}
 
-	-- 配置设置
+
 	filter "configurations:Debug"
 		defines "XENGINE_DEBUG"
 		buildoptions "/MDd"
@@ -112,18 +109,19 @@ project "XEngine"
 		buildoptions "/MD"
 		optimize "On"
 	
--- 应用项目
-project "DemoApp"
-	-- 位置
-	location "DemoApp"
-	-- 类型控制台应用
-	kind "ConsoleApp"
-	-- 语言类型
-	language "C++"
 
-	-- 目标输出目录
+project "DemoApp"
+
+	location "DemoApp"
+
+	kind "ConsoleApp"
+
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "off"
+
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	-- 中间输出目录
+
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 
@@ -144,13 +142,13 @@ project "DemoApp"
 		"%{IncludeDir.glm}"
 	}
 
-	-- 链接项目
+
 	links
 	{
 		"XEngine"
 	}
 
-	-- 系统设置
+
 	filter "system:windows"
 		cppdialect "C++17"
 		systemversion "latest"
@@ -160,7 +158,7 @@ project "DemoApp"
 			"XENGINE_PLATFORM_WINDOWS"
 		}
 
-	-- 配置设置
+
 	filter "configurations:Debug"
 		defines "XENGINE_DEBUG"
 		runtime "Debug"

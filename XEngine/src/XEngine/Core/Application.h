@@ -37,6 +37,7 @@ namespace XEngine {
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 
+
 		void Run();
 	private:
 		Scope<Window> m_Window;
