@@ -2,6 +2,7 @@
 workspace "XEngine"
 	-- 架构
 	architecture "x64"
+	startproject "DemoApp"
 	-- 配置类型
 	configurations
 	{
@@ -33,7 +34,6 @@ project "XEngine"
 	kind "SharedLib"
 	-- 语言类型
 	language "C++"
-
 	staticruntime "off"
 
 	-- 目标输出目录

@@ -77,6 +77,8 @@ namespace XEngine {
 				layer->OnUpdate();
 			}
 
+			
+
 			/*m_ImGuiLayer->Begin();
 			{
 

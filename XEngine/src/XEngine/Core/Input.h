@@ -7,7 +7,7 @@
 
 namespace XEngine {
 
-	class Input
+	class XENGINE_API Input
 	{
 	public:
 		static bool IsKeyPressed(KeyCode key);
