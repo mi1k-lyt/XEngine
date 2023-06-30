@@ -29,6 +29,23 @@ namespace XEngine {
 
 }
 
+
+
+// Core Log macros
+#define XENGINE_CORE_TRACE(...)    ::XEngine::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define XENGINE_CORE_INFO(...)     ::XEngine::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define XENGINE_CORE_WARN(...)     ::XEngine::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define XENGINE_CORE_ERROR(...)    ::XEngine::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define XENGINE_CORE_CRITICAL(...) ::XEngine::Log::GetCoreLogger()->critical(__VA_ARGS__)
+
+// Client Log macros
+#define XENGINE_TRACE(...)         ::XEngine::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define XENGINE_INFO(...)          ::XEngine::Log::GetClientLogger()->info(__VA_ARGS__)
+#define XENGINE_WARN(...)          ::XEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define XENGINE_ERROR(...)         ::XEngine::Log::GetClientLogger()->error(__VA_ARGS__)
+#define XENGINE_CRITICAL(...)      ::XEngine::Log::GetClientLogger()->critical(__VA_ARGS__)
+
+
 template<typename OStream, glm::length_t L, typename T, glm::qualifier Q>
 inline OStream& operator<<(OStream& os, const glm::vec<L, T, Q>& vector)
 {
@@ -46,21 +63,3 @@ inline OStream& operator<<(OStream& os, glm::qua<T, Q> quaternion)
 {
 	return os << glm::to_string(quaternion);
 }
-
-// Core Log macros
-#define XENGINE_CORE_TRACE(...)    ::XEngine::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define XENGINE_CORE_INFO(...)     ::XEngine::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define XENGINE_CORE_WARN(...)     ::XEngine::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define XENGINE_CORE_ERROR(...)    ::XEngine::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define XENGINE_CORE_CRITICAL(...) ::XEngine::Log::GetCoreLogger()->critical(__VA_ARGS__)
-
-// Client Log macros
-#define XENGINE_TRACE(...)         ::XEngine::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define XENGINE_INFO(...)          ::XEngine::Log::GetClientLogger()->info(__VA_ARGS__)
-#define XENGINE_WARN(...)          ::XEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define XENGINE_ERROR(...)         ::XEngine::Log::GetClientLogger()->error(__VA_ARGS__)
-#define XENGINE_CRITICAL(...)      ::XEngine::Log::GetClientLogger()->critical(__VA_ARGS__)
-
-
-
-

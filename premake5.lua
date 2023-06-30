@@ -28,14 +28,13 @@ include "XEngine/vendor/imgui"
 
 project "XEngine"
 	location "XEngine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
-	staticruntime "off"
+	staticruntime "on"
 
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 
@@ -78,7 +77,6 @@ project "XEngine"
 
 	
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -87,41 +85,31 @@ project "XEngine"
 			"XENGINE_BUILD_DLL"
 		}
 
-		
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/DemoApp")
-		}
-
 
 	filter "configurations:Debug"
 		defines "XENGINE_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 	
 	filter "configurations:Release"
 		defines "XENGINE_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "XENGINE_DIST"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 	
 
 project "DemoApp"
-
 	location "DemoApp"
-
 	kind "ConsoleApp"
-
 	language "C++"
 	cppdialect "C++17"
-	staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 
@@ -150,7 +138,6 @@ project "DemoApp"
 
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -162,15 +149,15 @@ project "DemoApp"
 	filter "configurations:Debug"
 		defines "XENGINE_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 	
 	filter "configurations:Release"
 		defines "XENGINE_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "XENGINE_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 	

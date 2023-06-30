@@ -3,10 +3,14 @@
 #include <memory>
 
 #ifdef XENGINE_PLATFORM_WINDOWS
-	#ifdef XENGINE_BUILD_DLL
-		#define XENGINE_API __declspec(dllexport)
-	#else 
-		#define XENGINE_API __declspec(dllimport)
+	#if XENGINE_DYNAMIC_LINK
+		#ifdef XENGINE_BUILD_DLL
+			#define XENGINE_API __declspec(dllexport)
+		#else 
+			#define XENGINE_API __declspec(dllimport)
+		#endif
+	#else
+		#define XENGINE_API
 	#endif
 #else
 	#error XEngine only supports Windows now!
