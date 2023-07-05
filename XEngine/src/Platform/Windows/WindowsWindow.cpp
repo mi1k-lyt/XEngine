@@ -38,6 +38,8 @@ namespace XEngine {
 
 		XENGINE_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
+		
+
 		if (s_GLFWWindowCount == 0)
 		{
 			int success = glfwInit();
@@ -57,8 +59,9 @@ namespace XEngine {
 		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();
 
+		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
-		SetVSync(true);
+		SetVSync(false);
 		
 		// Set GLFW callbacks
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)

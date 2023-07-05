@@ -9,6 +9,8 @@
 
 #include "XEngine/ImGui/ImGuiLayer.h"
 
+#include "XEngine/Renderer/Shader.h"
+
 int main(int argc, char** argv);
 
 namespace XEngine {
@@ -44,6 +46,13 @@ namespace XEngine {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+
+		unsigned int m_VertexArray;
+		unsigned int m_VertexBuffer;
+		unsigned int m_IndexBuffer;
+
+		Scope<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 		friend int ::main(int argc, char** argv);
