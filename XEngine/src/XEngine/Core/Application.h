@@ -10,6 +10,7 @@
 #include "XEngine/ImGui/ImGuiLayer.h"
 
 #include "XEngine/Renderer/Shader.h"
+#include "XEngine/Renderer/Buffer.h"
 
 int main(int argc, char** argv);
 
@@ -49,10 +50,10 @@ namespace XEngine {
 
 
 		unsigned int m_VertexArray;
-		unsigned int m_VertexBuffer;
-		unsigned int m_IndexBuffer;
 
 		Scope<Shader> m_Shader;
+		Ref<VertexBuffer> m_VertexBuffer;
+		Ref<IndexBuffer> m_IndexBuffer;
 	private:
 		static Application* s_Instance;
 		friend int ::main(int argc, char** argv);
