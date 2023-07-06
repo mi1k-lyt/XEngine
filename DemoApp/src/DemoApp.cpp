@@ -1,5 +1,5 @@
 #include <XEngine.h>
-
+#include <imgui.h>
 
 class ExampleLayer : public XEngine::Layer
 {
@@ -15,6 +15,12 @@ public:
 		
 	}
 
+	void OnImGuiRender() override
+	{
+		ImGui::Begin("text");
+		ImGui::Text("hello word!");
+		ImGui::End();
+	}
 
 	void OnEvent(XEngine::Event& event) override
 	{
@@ -32,7 +38,7 @@ class Demo : public XEngine::Application
 public:
 	Demo()
 	{
-		//PushLayer(new ExampleLayer());
+		PushLayer(new ExampleLayer());
 	}
 
 	~Demo()

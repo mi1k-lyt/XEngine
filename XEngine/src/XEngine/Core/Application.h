@@ -52,8 +52,7 @@ namespace XEngine {
 
 		Scope<Shader> m_Shader;
 		Ref<VertexArray> m_VertexArray;
-		Ref<VertexBuffer> m_VertexBuffer;
-		Ref<IndexBuffer> m_IndexBuffer;
+		
 		
 	private:
 		static Application* s_Instance;

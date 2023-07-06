@@ -37,22 +37,27 @@ namespace XEngine {
 			 0.0f,  0.5f, 0.0f,  1.0f, 0.0f, 1.0f, 1.0f
 		};
 
-		m_VertexBuffer = VertexBuffer::Create(vertices, sizeof(vertices));
+		Ref<VertexBuffer> vertexBuffer;
+		
+		vertexBuffer = VertexBuffer::Create(vertices, sizeof(vertices));
 
 		{
 			BufferLayout layout = {
 				{ ShaderDataType::Float3, "a_Position" },
 				{ ShaderDataType::Float4, "a_Color" }
 			};
-			m_VertexBuffer->SetLayout(layout);
+			vertexBuffer->SetLayout(layout);
 		}
 
-		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
+		m_VertexArray->AddVertexBuffer(vertexBuffer);
+
+
+		Ref<IndexBuffer> indexBuffer;
 
 		uint32_t indices[3] = { 2, 1, 0 };
-		m_IndexBuffer = IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t));
+		indexBuffer = IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t));
 
-		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
+		m_VertexArray->SetIndexBuffer(indexBuffer);
 	
 		std::string vertexSrc = R"(
 			#version 460 core
@@ -138,7 +143,7 @@ namespace XEngine {
 
 			m_Shader->Bind();
 			m_VertexArray->Bind();
-			glDrawArrays(GL_TRIANGLES, 0, m_IndexBuffer->GetCount());
+			glDrawArrays(GL_TRIANGLES, 0, m_VertexArray->GetIndexBuffer()->GetCount());
 
 
 			for (Layer* layer : m_LayerStack) {
