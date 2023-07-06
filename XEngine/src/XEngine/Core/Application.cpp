@@ -16,27 +16,6 @@ namespace XEngine {
 
 	Application* Application::s_Instance = nullptr;
 
-	static GLenum ShaderDataTypeToOpenGLType(ShaderDataType type)
-	{
-		switch (type)
-		{
-			case ShaderDataType::Float:    return GL_FLOAT;
-			case ShaderDataType::Float2:   return GL_FLOAT;
-			case ShaderDataType::Float3:   return GL_FLOAT;
-			case ShaderDataType::Float4:   return GL_FLOAT;
-			case ShaderDataType::Mat3:     return GL_FLOAT;
-			case ShaderDataType::Mat4:     return GL_FLOAT;
-			case ShaderDataType::Int:      return GL_INT;
-			case ShaderDataType::Int2:     return GL_INT;
-			case ShaderDataType::Int3:     return GL_INT;
-			case ShaderDataType::Int4:     return GL_INT;
-			case ShaderDataType::Bool:     return GL_BOOL;
-		}
-
-		XENGINE_CORE_ASSERT(false, "Unkown ShaderDataType!");
-		return 0;
-	}
-
 	Application::Application()
 	{
 		XENGINE_CORE_ASSERT(!s_Instance, "Application already exists!");
@@ -72,6 +51,8 @@ namespace XEngine {
 
 		uint32_t indices[3] = { 2, 1, 0 };
 		m_IndexBuffer = IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t));
+
+		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 	
 		std::string vertexSrc = R"(
 			#version 460 core
