@@ -2,11 +2,12 @@
 #include "XEngine/Renderer/VertexArray.h"
 
 #include "XEngine/Renderer/Renderer.h"
+#include "Platform/OpenGL/OpenGLVertexArray.h"
 
 
 namespace XEngine {
 
-	/*Ref<VertexArray> VertexArray::Create()
+	Ref<VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -16,6 +17,6 @@ namespace XEngine {
 
 			XENGINE_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
-	}*/
+	}
 
 }

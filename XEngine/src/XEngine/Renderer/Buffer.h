@@ -92,6 +92,8 @@ namespace XEngine {
 
 		uint32_t GetStride() const { return m_Stride; }
 
+		std::vector<BufferElement> GetElements() const { return m_Elements; }
+
 	private:
 		void CalculateOffsetAndStride()
 		{

@@ -11,6 +11,7 @@
 
 #include "XEngine/Renderer/Shader.h"
 #include "XEngine/Renderer/Buffer.h"
+#include "XEngine/Renderer/VertexArray.h"
 
 int main(int argc, char** argv);
 
@@ -49,11 +50,11 @@ namespace XEngine {
 		LayerStack m_LayerStack;
 
 
-		unsigned int m_VertexArray;
-
 		Scope<Shader> m_Shader;
+		Ref<VertexArray> m_VertexArray;
 		Ref<VertexBuffer> m_VertexBuffer;
 		Ref<IndexBuffer> m_IndexBuffer;
+		
 	private:
 		static Application* s_Instance;
 		friend int ::main(int argc, char** argv);

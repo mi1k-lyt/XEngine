@@ -50,8 +50,7 @@ namespace XEngine {
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-		glCreateVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
+		m_VertexArray = VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f, 1.0f,
@@ -69,20 +68,7 @@ namespace XEngine {
 			m_VertexBuffer->SetLayout(layout);
 		}
 
-		uint32_t index = 0;
-		const auto& layout = m_VertexBuffer->GetLayout();
-		for (const auto& element : layout)
-		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(
-				index, 
-				element.GetComponentCount(), 
-				ShaderDataTypeToOpenGLType(element.Type), 
-				element.Normalized, 
-				layout.GetStride(),
-				(const void*)element.Offset);
-			++index;
-		}
+		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
 
 		uint32_t indices[3] = { 2, 1, 0 };
 		m_IndexBuffer = IndexBuffer::Create(indices, sizeof(indices)/sizeof(uint32_t));
@@ -170,7 +156,7 @@ namespace XEngine {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
+			m_VertexArray->Bind();
 			glDrawArrays(GL_TRIANGLES, 0, m_IndexBuffer->GetCount());
 
 
