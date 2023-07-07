@@ -17,6 +17,7 @@ namespace XEngine {
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
+		:m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		XENGINE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -65,6 +66,8 @@ namespace XEngine {
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;	
 
+			uniform mat4 u_ViewProjection;
+
 			out vec3 v_Position;
 			out vec4 v_Color;		
 
@@ -72,7 +75,7 @@ namespace XEngine {
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = vec4(a_Position, 1.0f);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0f);
 			}
 
 		)";
@@ -122,7 +125,7 @@ namespace XEngine {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(XENGINE_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(XENGINE_BIND_EVENT_FN(Application::OnWindowResize));
-		XENGINE_CORE_TRACE("{0}", e);
+		//XENGINE_CORE_TRACE("{0}", e);
 
 		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
@@ -141,9 +144,14 @@ namespace XEngine {
 			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 			RenderCommand::Clear();
 
-			m_Shader->Bind();
-			m_VertexArray->Bind();
-			Renderer::Submit(m_VertexArray);
+			m_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });
+			m_Camera.SetRotation(45.0f);
+
+			Renderer::BeginScene(m_Camera);
+
+			Renderer::Submit(m_Shader, m_VertexArray);
+
+			Renderer::EndScene();
 
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();

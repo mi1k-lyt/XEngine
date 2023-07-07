@@ -12,6 +12,7 @@
 #include "XEngine/Renderer/Shader.h"
 #include "XEngine/Renderer/Buffer.h"
 #include "XEngine/Renderer/VertexArray.h"
+#include "XEngine/Renderer/OrthographicCamera.h"
 
 int main(int argc, char** argv);
 
@@ -50,10 +51,10 @@ namespace XEngine {
 		LayerStack m_LayerStack;
 
 
-		Scope<Shader> m_Shader;
+		Ref<Shader> m_Shader;
 		Ref<VertexArray> m_VertexArray;
 		
-		
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 		friend int ::main(int argc, char** argv);
