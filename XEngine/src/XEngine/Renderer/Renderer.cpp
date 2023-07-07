@@ -20,6 +20,9 @@ namespace XEngine {
 		RenderCommand::SetViewport(0, 0, width, height);
 	}
 
-	
+	void Renderer::Submit(const Ref<VertexArray>& vertexArray)
+	{
+		RenderCommand::DrawIndexed(vertexArray);
+	}
 
 }

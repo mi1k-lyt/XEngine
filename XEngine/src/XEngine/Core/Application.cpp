@@ -138,13 +138,12 @@ namespace XEngine {
 
 		while (m_Running)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			RenderCommand::Clear();
 
 			m_Shader->Bind();
 			m_VertexArray->Bind();
-			glDrawArrays(GL_TRIANGLES, 0, m_VertexArray->GetIndexBuffer()->GetCount());
-
+			Renderer::Submit(m_VertexArray);
 
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
