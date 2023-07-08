@@ -45,6 +45,7 @@ public:
 			layout(location = 1) in vec4 a_Color;	
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;		
@@ -53,7 +54,7 @@ public:
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0f);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0f);
 			}
 
 		)";
@@ -77,8 +78,7 @@ public:
 	}
 
 	void OnUpdate(XEngine::Timestep timestep) override
-	{
-
+	{	
 		if (XEngine::Input::IsKeyPressed(XEngine::Key::A))
 		{
 			m_CameraPosition.x -= m_CameraMoveSpeed * timestep;
@@ -139,11 +139,12 @@ public:
 	XEngine::Ref<XEngine::VertexArray> m_VertexArray;
 
 	XEngine::OrthographicCamera m_Camera;
-
 	glm::vec3 m_CameraPosition = { 0.0f, 0.0f, 0.0f };
 	float m_CameraMoveSpeed = 1.0f;
+
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 10.0f;
+
 };
 
 class Demo : public XEngine::Application
