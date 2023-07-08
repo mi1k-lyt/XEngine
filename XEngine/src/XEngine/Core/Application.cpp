@@ -6,6 +6,7 @@
 #include "XEngine/Renderer/Renderer.h"
 
 #include "XEngine/Core/Input.h"
+#include "XEngine/Utils/PlatformUtils.h"
 
 #include <glad/glad.h>
 
@@ -17,7 +18,6 @@ namespace XEngine {
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
-		:m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		XENGINE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -76,20 +76,13 @@ namespace XEngine {
 
 		while (m_Running)
 		{
-			/*RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			RenderCommand::Clear();
+			float time = Time::GetTime(); //Platform::GetTime
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
-			m_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });
-			m_Camera.SetRotation(45.0f);
-
-			Renderer::BeginScene(m_Camera);
-
-			Renderer::Submit(m_Shader, m_VertexArray);
-
-			Renderer::EndScene();*/
-
+			
 			for (Layer* layer : m_LayerStack) {
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			m_ImGuiLayer->Begin();

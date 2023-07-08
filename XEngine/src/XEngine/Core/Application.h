@@ -7,9 +7,10 @@
 #include "XEngine/Events/Event.h"
 #include "XEngine/Events/ApplicationEvent.h"
 
+#include "XEngine/Core/Timestep.h"
+
 #include "XEngine/ImGui/ImGuiLayer.h"
 
-#include "XEngine/Renderer/OrthographicCamera.h"
 
 int main(int argc, char** argv);
 
@@ -47,11 +48,7 @@ namespace XEngine {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-
-		Ref<Shader> m_Shader;
-		Ref<VertexArray> m_VertexArray;
-		
-		OrthographicCamera m_Camera;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 		friend int ::main(int argc, char** argv);

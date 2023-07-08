@@ -2,6 +2,7 @@
 
 #include "XEngine/Core/Core.h"
 #include "XEngine/Events/Event.h"
+#include "XEngine/Core/Timestep.h"
 
 namespace XEngine {
 
@@ -13,7 +14,7 @@ namespace XEngine {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep timestep) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

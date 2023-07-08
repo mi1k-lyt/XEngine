@@ -76,34 +76,35 @@ public:
 		m_Shader.reset(new XEngine::Shader(vertexSrc, fragmentSrc));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(XEngine::Timestep timestep) override
 	{
+
 		if (XEngine::Input::IsKeyPressed(XEngine::Key::A))
 		{
-			m_CameraPosition.x -= m_CameraMoveSpeed;
+			m_CameraPosition.x -= m_CameraMoveSpeed * timestep;
 		}
 		else if (XEngine::Input::IsKeyPressed(XEngine::Key::D))
 		{
-			m_CameraPosition.x += m_CameraMoveSpeed;
+			m_CameraPosition.x += m_CameraMoveSpeed * timestep;
 		}
 
 		if (XEngine::Input::IsKeyPressed(XEngine::Key::W))
 		{
-			m_CameraPosition.y += m_CameraMoveSpeed;
+			m_CameraPosition.y += m_CameraMoveSpeed * timestep;
 		}
 		else if (XEngine::Input::IsKeyPressed(XEngine::Key::S))
 		{
-			m_CameraPosition.y -= m_CameraMoveSpeed;
+			m_CameraPosition.y -= m_CameraMoveSpeed * timestep;
 		}
 
 
 		if (XEngine::Input::IsKeyPressed(XEngine::Key::Left))
 		{
-			m_CameraRotation -= m_CameraRotationSpeed;
+			m_CameraRotation -= m_CameraRotationSpeed * timestep;
 		}
 		else if (XEngine::Input::IsKeyPressed(XEngine::Key::Right))
 		{
-			m_CameraRotation += m_CameraRotationSpeed;
+			m_CameraRotation += m_CameraRotationSpeed * timestep;
 		}
 
 
@@ -123,8 +124,8 @@ public:
 
 	void OnImGuiRender() override
 	{
-		ImGui::Begin("text");
-		ImGui::Text("hello word!");
+		ImGui::Begin("Test");
+		ImGui::Text("Welcome XEngine!");
 		ImGui::End();
 	}
 
@@ -140,9 +141,9 @@ public:
 	XEngine::OrthographicCamera m_Camera;
 
 	glm::vec3 m_CameraPosition = { 0.0f, 0.0f, 0.0f };
-	float m_CameraMoveSpeed = 0.0001f;
+	float m_CameraMoveSpeed = 1.0f;
 	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 0.01f;
+	float m_CameraRotationSpeed = 10.0f;
 };
 
 class Demo : public XEngine::Application

@@ -14,6 +14,7 @@
 
 #include "XEngine/Core/Core.h"
 #include "XEngine/Core/Log.h"
+#include "XEngine/Core/Timestep.h"
 
 #ifdef XENGINE_PLATFORM_WINDOWS
 	#include <Windows.h>
