@@ -7,7 +7,7 @@
 
 namespace XEngine {
 
-	class XENGINE_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack() = default;

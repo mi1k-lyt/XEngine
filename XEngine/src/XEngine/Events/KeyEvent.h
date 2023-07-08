@@ -5,7 +5,7 @@
 
 namespace XEngine {
 
-	class XENGINE_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		KeyCode GetKeyCode() const { return m_KeyCode; }
@@ -18,7 +18,7 @@ namespace XEngine {
 		KeyCode m_KeyCode;
 	};
 
-	class XENGINE_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(const KeyCode keycode, bool isRepeat = false)
@@ -38,7 +38,7 @@ namespace XEngine {
 		bool m_IsRepeat;
 	};
 
-	class XENGINE_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(const KeyCode keycode)
@@ -54,7 +54,7 @@ namespace XEngine {
 		EVENT_CLASS_TYPE(KeyReleased);
 	};
 
-	class XENGINE_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(const KeyCode keycode)

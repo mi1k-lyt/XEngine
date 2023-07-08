@@ -20,6 +20,10 @@
 #include "XEngine/Renderer/RenderCommand.h"
 
 #include "XEngine/Renderer/Buffer.h"
+#include "XEngine/Renderer/Shader.h"
+#include "XEngine/Renderer/VertexArray.h"
+
+#include "XEngine/Renderer/OrthographicCamera.h"
 // -----------------------------------
 
 // ----------Entry Point--------------

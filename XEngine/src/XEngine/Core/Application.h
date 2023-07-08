@@ -9,16 +9,13 @@
 
 #include "XEngine/ImGui/ImGuiLayer.h"
 
-#include "XEngine/Renderer/Shader.h"
-#include "XEngine/Renderer/Buffer.h"
-#include "XEngine/Renderer/VertexArray.h"
 #include "XEngine/Renderer/OrthographicCamera.h"
 
 int main(int argc, char** argv);
 
 namespace XEngine {
 
-	class XENGINE_API Application
+	class Application
 	{
 	public:
 		Application();

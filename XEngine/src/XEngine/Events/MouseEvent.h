@@ -5,7 +5,7 @@
 
 namespace XEngine {
 
-	class XENGINE_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(const float x, const float y)
@@ -27,7 +27,7 @@ namespace XEngine {
 		float m_MouseX, m_MouseY;
 	};
 
-	class XENGINE_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(const float xOffset, const float yOffset)
@@ -49,7 +49,7 @@ namespace XEngine {
 		float m_XOffset, m_YOffset;
 	};
 
-	class XENGINE_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		MouseCode GetMouseButton() const { return m_Button; }
@@ -62,7 +62,7 @@ namespace XEngine {
 		MouseCode m_Button;
 	};
 
-	class XENGINE_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(const MouseCode button)
@@ -78,7 +78,7 @@ namespace XEngine {
 		EVENT_CLASS_TYPE(MouseButtonPressed);
 	};
 
-	class XENGINE_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(const MouseCode button)

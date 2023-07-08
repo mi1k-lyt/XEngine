@@ -12,7 +12,7 @@
 
 namespace XEngine {
 
-	class XENGINE_API Log
+	class Log
 	{
 	public:
 		static void Init();
