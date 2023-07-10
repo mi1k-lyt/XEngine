@@ -20,6 +20,7 @@ IncludeDir["GLFW"] = "XEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "XEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "XEngine/vendor/imgui"
 IncludeDir["glm"] = "XEngine/vendor/glm"
+IncludeDir["stb_image"] = "XEngine/vendor/stb_image"
 
 include "XEngine/vendor/GLFW"
 include "XEngine/vendor/Glad"
@@ -45,6 +46,8 @@ project "XEngine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -62,7 +65,8 @@ project "XEngine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links
