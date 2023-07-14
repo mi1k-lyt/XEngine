@@ -6,8 +6,10 @@
 
 #include <glm/gtc/type_ptr.hpp>
 
+
 namespace XEngine {
 
+	
 	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
 
@@ -118,6 +120,25 @@ namespace XEngine {
 		// Always detach shaders after a successful link.
 		glDetachShader(m_RendererID, vertexShader);
 		glDetachShader(m_RendererID, fragmentShader);
+	}
+
+	OpenGLShader::OpenGLShader(const std::string& filepath)
+	{
+
+		std::string result;
+		std::ifstream in(filepath, std::ios::in, std::ios::binary);
+		if (in)
+		{
+			in.seekg(0, std::ios::end);
+			result.resize(in.tellg());
+			in.seekg(0, std::ios::beg);
+			in.read(&result[0], result.size());
+			in.close();
+		}
+		else
+		{
+			XENGINE_CORE_ERROR("Could not open file '{0}'", filepath);
+		}
 	}
 
 	OpenGLShader::~OpenGLShader()

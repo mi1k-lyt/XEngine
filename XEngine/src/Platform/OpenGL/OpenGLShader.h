@@ -11,6 +11,7 @@ namespace XEngine {
 	{
 	public:
 		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		OpenGLShader(const std::string& filepath);
 		virtual ~OpenGLShader();
 
 		virtual void Bind() const override;
@@ -37,6 +38,8 @@ namespace XEngine {
 
 
 	private:
+		void Compile();
+
 		virtual GLint GetUniformLocation(const std::string& name) const override;
 	private:
 		uint32_t m_RendererID;
