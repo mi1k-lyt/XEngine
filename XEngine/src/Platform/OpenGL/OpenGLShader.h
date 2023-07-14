@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <string.h>
 #include <glm/glm.hpp>
 
 #include "XEngine/Renderer/Shader.h"
@@ -38,7 +38,9 @@ namespace XEngine {
 
 
 	private:
-		void Compile();
+		std::string ReadFile(const std::string& filepath);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+		void Compile(std::unordered_map<GLenum, std::string>& shaderSource);
 
 		virtual GLint GetUniformLocation(const std::string& name) const override;
 	private:

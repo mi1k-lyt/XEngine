@@ -1,6 +1,6 @@
-[16:27:33] [warning] XENGINE: Init Log
-[16:27:33] [info] XENGINE: Creating window XEngine By Li (1600, 900)
-[16:27:33] [info] XENGINE: OpenGL Info:
-[16:27:33] [info] XENGINE: Vendor: NVIDIA Corporation
-[16:27:33] [info] XENGINE: Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2
-[16:27:33] [info] XENGINE: Version: 4.6.0 NVIDIA 536.40
+[15:50:39] [warning] XENGINE: Init Log
+[15:50:39] [info] XENGINE: Creating window XEngine By Li (1600, 900)
+[15:50:39] [info] XENGINE: OpenGL Info:
+[15:50:39] [info] XENGINE: Vendor: NVIDIA Corporation
+[15:50:39] [info] XENGINE: Renderer: NVIDIA GeForce RTX 3070 Ti Laptop GPU/PCIe/SSE2
+[15:50:39] [info] XENGINE: Version: 4.6.0 NVIDIA 536.40
