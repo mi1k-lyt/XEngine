@@ -42,7 +42,7 @@ public:
 
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 		
-		m_Shader = XEngine::Shader::Create("assets/shaders/Texture.glsl");
+		auto m_Shader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Shader->Bind();
 		m_Shader->SetInt("u_Texture", 0);
@@ -93,6 +93,7 @@ public:
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
+		auto m_Shader = m_ShaderLibrary.Get("Texture");
 		m_Shader->Bind();
 		//m_Shader->SetFloat4("u_Color", m_Color);
 
@@ -136,7 +137,8 @@ public:
 	}
 
 private:
-	XEngine::Ref<XEngine::Shader> m_Shader;
+	XEngine::ShaderLibrary m_ShaderLibrary;
+
 	XEngine::Ref<XEngine::VertexArray> m_VertexArray;
 
 	XEngine::OrthographicCamera m_Camera;

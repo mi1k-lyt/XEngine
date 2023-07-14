@@ -10,7 +10,7 @@ namespace XEngine {
 	class OpenGLShader : public Shader
 	{
 	public:
-		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
 		OpenGLShader(const std::string& filepath);
 		virtual ~OpenGLShader();
 
@@ -36,7 +36,7 @@ namespace XEngine {
 		void UploadUniformMat3(const std::string& name, const glm::mat3& matrix);
 		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
 
-
+		virtual const std::string& GetName() const override { return m_Name; }
 	private:
 		std::string ReadFile(const std::string& filepath);
 		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
@@ -45,6 +45,8 @@ namespace XEngine {
 		virtual GLint GetUniformLocation(const std::string& name) const override;
 	private:
 		uint32_t m_RendererID;
+
+		std::string m_Name;
 		mutable std::unordered_map<std::string, GLint> m_UniformLocationCache;
 	};
 
