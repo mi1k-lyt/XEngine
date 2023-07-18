@@ -21,10 +21,14 @@ IncludeDir["Glad"] = "XEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "XEngine/vendor/imgui"
 IncludeDir["glm"] = "XEngine/vendor/glm"
 IncludeDir["stb_image"] = "XEngine/vendor/stb_image"
+IncludeDir["msdfgen"] = "XEngine/vendor/msdf-atlas-gen/msdfgen"
+IncludeDir["msdf"] = "XEngine/vendor/msdf-atlas-gen/msdf-atlas-gen"
+--IncludeDir["msdf-atlas-gen"] = "XEngine/vendor/msdf-atlas-gen/msdf-atlas-gen"
 
 include "XEngine/vendor/GLFW"
 include "XEngine/vendor/Glad"
 include "XEngine/vendor/imgui"
+
 
 
 project "XEngine"
@@ -66,7 +70,9 @@ project "XEngine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.msdfgen}",
+		"%{IncludeDir.msdf}"
 	}
 
 	links
@@ -74,6 +80,7 @@ project "XEngine"
 		"GLFW",
 		"Glad",
 		"ImGui",
+		--"msdf-atlas-gen",
 		-- Reason Why add Dwmapi.lib : https://stackoverflow.com/questions/10727627/dwmextendframeintoclientarea-dosent-work
 		'Dwmapi.lib',
 		"opengl32.lib"

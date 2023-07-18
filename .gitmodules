@@ -10,3 +10,6 @@
 [submodule "XEngine/vendor/imgui"]
 	path = XEngine/vendor/imgui
 	url = https://github.com/TheCherno/imgui.git
+[submodule "XEngine/vendor/msdf-atlas-gen"]
+	path = XEngine/vendor/msdf-atlas-gen
+	url = https://github.com/Chlumsky/msdf-atlas-gen.git

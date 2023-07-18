@@ -17,6 +17,7 @@
 
 // ------------Renderer---------------
 #include "XEngine/Renderer/Renderer.h"
+#include "XEngine/Renderer/Renderer2D.h"
 #include "XEngine/Renderer/RenderCommand.h"
 
 #include "XEngine/Renderer/Buffer.h"
@@ -26,9 +27,5 @@
 
 #include "XEngine/Renderer/OrthographicCamera.h"
 #include "XEngine/Renderer/OrthographicCameraController.h"
-// -----------------------------------
-
-// ----------Entry Point--------------
-#include "XEngine/Core/EntryPoint.h"
 // -----------------------------------
 

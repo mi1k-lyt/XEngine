@@ -58,7 +58,6 @@ namespace XEngine {
 
 	void OrthographicCameraController::OnEvent(Event& e)
 	{
-
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseScrolledEvent>(XENGINE_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
 		dispatcher.Dispatch<WindowResizeEvent>(XENGINE_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));

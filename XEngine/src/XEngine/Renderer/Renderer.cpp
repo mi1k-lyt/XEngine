@@ -1,5 +1,6 @@
 #include "Pch.h"
 #include "XEngine/Renderer/Renderer.h"
+#include "XEngine/Renderer/Renderer2D.h"
 
 namespace XEngine {
 
@@ -8,6 +9,7 @@ namespace XEngine {
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 
 	void Renderer::Shutdown()
