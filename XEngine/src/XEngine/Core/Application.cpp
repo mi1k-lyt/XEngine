@@ -81,7 +81,8 @@ namespace XEngine {
 			m_LastFrameTime = time;
 
 			
-			for (Layer* layer : m_LayerStack) {
+			for (Layer* layer : m_LayerStack) 
+			{
 				layer->OnUpdate(timestep);
 			}
 

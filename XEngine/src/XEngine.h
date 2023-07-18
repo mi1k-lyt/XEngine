@@ -25,6 +25,7 @@
 #include "XEngine/Renderer/VertexArray.h"
 
 #include "XEngine/Renderer/OrthographicCamera.h"
+#include "XEngine/Renderer/OrthographicCameraController.h"
 // -----------------------------------
 
 // ----------Entry Point--------------
